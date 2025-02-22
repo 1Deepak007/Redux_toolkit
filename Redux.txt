@@ -1,0 +1,41 @@
+Redus --> npm i react-redux
+
+
+
+If want to pass prop from parent to n'th child, we either pass to each component or we can use context_api.
+Or we can use
+
+
+
+Store - The store is a single, immutable JavaScript object that holds the entire state of your application. Think of it as the "single source of truth" for all the data your application needs. It's like a central database, but in memory.
+        Purpose:
+            Holds the state: It's the container for all your application's data.
+            Provides access to state: Components can read the current state from the store.   
+            Allows state updates: The store is the only place where state updates can happen (through dispatching actions, which we'll get to).
+            Notifies subscribers: When the state changes, the store notifies any components that are "subscribed" to it, so they can re-render with the new data.
+
+Reducer - A reducer is a pure function that takes the current state and an "action" as arguments, and returns a new state. It's the mechanism by which the state is actually updated.   
+          Handles state updates: Reducers determine how the state changes in response to an action.
+
+
+"useSelector" and "useDispatch" are React hooks provided by react-redux that connect your React components to the Redux store.
+
+    useSelector:
+            Purpose: Extracts data from the Redux store and makes it available to your component as props. It's how your component "reads" data from the store.  
+
+    useDispatch:
+            Purpose: Provides a reference to the dispatch function from the Redux store. This allows your component to dispatch actions, which are the only way to trigger state updates in Redux. It's how your component "writes" to the store (indirectly, through actions).   
+            How it works: useDispatch returns the dispatch function itself. You can then call dispatch with an action object to update the state.
+            Re-renders: useDispatch itself does not cause re-renders. However, dispatching an action will likely cause a re-render because the state will change, and components using useSelector to access that state will re-render.
+
+* npm create vite@latest
+* npm i
+* npm i @reduxjs/toolkit
+* npm i react-redux
+* npm run dev
+
+
+configure store   ---->  create store.js   {configureStore, reducer}    register reducers in store
+create   ----> todoSlice.js                {set initial state and use create reducers that contains functions }  
+
+
