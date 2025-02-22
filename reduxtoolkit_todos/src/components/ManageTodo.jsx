@@ -1,19 +1,39 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { addTodo, removeTodo, updateTodo, markDone } from '../features/todo/todoSlice';
 
-const AddTodo = () => {
+
+const ManageTodo = ({ editId, setEditId }) => {
+
+    const todos = useSelector(state => state.todos.todos); // Get todos from Redux store
 
     const [todo, setTodo] = useState('');
 
     // use useDispatch for sending values
     const dispatch = useDispatch();
 
+    useEffect(()=>{
+        if(editId){
+            const todoToEdit = todos.find((todo) => todo.id === editId);
+            if(todoToEdit){
+                setTodo(todoToEdit.text);
+            }
+        }
+    },[editId]);
+
     const addTodoHandler = (e) => {
         e.preventDefault();
-        dispatch(addTodo(todo));        // using dispatch send values(reducer)
+        if(editId){
+            dispatch(updateTodo({ id: editId, text: todo }));
+            setEditId(null);
+        }
+        else{
+            dispatch(addTodo(todo));        // using dispatch send values(reducer)
+            setTodo('');
+        }
         setTodo('');
     }
+
 
     return (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '10px' }}>
@@ -29,11 +49,11 @@ const AddTodo = () => {
                     onMouseOver={(e) => (e.target.style.backgroundColor = '#009acd')}
                     onMouseOut={(e) => (e.target.style.backgroundColor = '#00bfff')}
                 >
-                    Add
+                    {editId ? 'Update' : 'Add'}
                 </button>
             </form>
         </div>
     )
 }
 
-export default AddTodo
+export default ManageTodo

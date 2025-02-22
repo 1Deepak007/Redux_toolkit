@@ -1,52 +1,49 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-  todos: [{ id: 1, text: "Learn Redux", completed: false }],
+  todos: [], // Initialize with an empty array
 };
 
 const todoSlice = createSlice({
   name: "todos",
   initialState,
 
-  // reducer contains properties and functions
+  // Reducers
   reducers: {
-    // state is the current state of the store
-    // action is the action that triggered the reducer, action contains data
+    // Add a new todo
     addTodo: (state, action) => {
       const todo = {
-        //create a todo
-        id: nanoid(), // nanoid is a unique id generator
+        id: nanoid(), // Generate a unique ID
         text: action.payload,
-        completed: false, // Add the completed property with a default value
+        completed: false, // Default completed status
       };
-      state.todos.push(todo); // update state
+      state.todos.push(todo); // Add the new todo to the array
     },
 
-    // we added todo, now we will remove todo.
-    removeTodo: (state, action) => {
-      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
-    },
-
-    // update todo
+    // Update an existing todo
     updateTodo: (state, action) => {
       state.todos = state.todos.map((todo) => {
         if (todo.id === action.payload.id) {
-          todo.text = action.payload.text;
+          todo.text = action.payload.text; // Update the text of the matching todo
         }
         return todo;
       });
     },
 
-    // mark as done
+    // Remove a todo
+    removeTodo: (state, action) => {
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload); // Filter out the todo with the matching ID
+    },
+
+    // Toggle the completed status of a todo
     markDone: (state, action) => {
       state.todos = state.todos.map((todo) => {
         if (todo.id === action.payload) {
-          todo.completed = !todo.completed;
+          todo.completed = !todo.completed; // Toggle the completed status
         }
         return todo;
       });
     },
-    
   },
 });
 
