@@ -1,4 +1,6 @@
-Redus --> npm i react-redux
+npx create-react-app@latest redux_toolkit
+
+Redux --> npm i react-redux
 
 
 
@@ -7,7 +9,8 @@ Or we can use
 
 
 
-Store - The store is a single, immutable JavaScript object that holds the entire state of your application. Think of it as the "single source of truth" for all the data your application needs. It's like a central database, but in memory.
+Store - is the centralised place from where all states are managed.
+        The store is a single, immutable JavaScript object that holds the entire state of your application. Think of it as the "single source of truth" for all the data your application needs. It's like a central database, but in memory.
         Purpose:
             Holds the state: It's the container for all your application's data.
             Provides access to state: Components can read the current state from the store.   
@@ -28,14 +31,27 @@ Reducer - A reducer is a pure function that takes the current state and an "acti
             How it works: useDispatch returns the dispatch function itself. You can then call dispatch with an action object to update the state.
             Re-renders: useDispatch itself does not cause re-renders. However, dispatching an action will likely cause a re-render because the state will change, and components using useSelector to access that state will re-render.
 
-* npm create vite@latest
-* npm i
-* npm i @reduxjs/toolkit
-* npm i react-redux
-* npm run dev
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                   UI
+                        -------------------------
+                        |                       |
+                        | [Cick Me Btn]     0   |
+                        |                Count  |
+                        |_______________________|
+
+[on click] --> handleClick() --> action_dispatch --> store --> reducer function called --> state updated by reducer's logic --> Store (updated state) --> UI update
 
 
-configure store   ---->  create store.js   {configureStore, reducer}    register reducers in store
-create   ----> todoSlice.js                {set initial state and use create reducers that contains functions }  
+->Action : [event info + additional info (payload)] 
+           is event (like onClick, onHover etc). Plane object that contain payload(data comming with action like some value) and event data 
 
+->Slice  : my app can have multiple features like authentication, counting etc, logic for maintaining each feature's state is written in slice. Initial state and reducer functions are defined here.
+->Reducer : function containing logic for updating data/state.
+->Store  : centralised place where states are managed.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                    action
+[increment button] --> handleClick() --> dispatch(increment()) --> Store(action(state count=0)) --> Reducer (action[increment()]) --> increment(will increase/update count) --> UI update
 
