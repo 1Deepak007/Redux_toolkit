@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, clearCart, removeFromCart, updateQuantity } from '../features/cartSlice';
+import { clearCart, removeFromCart, updateQuantity } from '../features/cartSlice';
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart); // Select state
@@ -69,7 +69,7 @@ const Cart = () => {
           </div>
         </>
       )}
-      <hr />
+      <hr className="mb-4 text-black"/>
     </div>
   );
 };

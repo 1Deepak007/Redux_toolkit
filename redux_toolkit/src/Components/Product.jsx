@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../features/cartSlice'
+import Cart from './Cart'
 
 
 const products = [
@@ -17,6 +18,7 @@ const Product = () => {
 
     return (
         <div>
+            <Cart />
             <h2 className='text-center text-2xl underline font-semibold'>Products</h2>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>

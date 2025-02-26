@@ -1,3 +1,32 @@
+                        Redux & RTK
+
+Action     -  Data sent from UI is action.   { type: 'ADD_TODO', payload: { id: 1, text: 'Learn Redux' } }
+Reducer    -  Reducer stores data of action in store. It is a pure function that takes the current state and an action as arguments and returns the new state.
+Store      -  Data stored here. We configure data here. It is the centralised place from where all states are managed
+Dispatcher -  is a function provided by Redux (dispatch) that sends the action to the reducer.    dispatch({ type: 'ADD_TODO', payload: { id: 1, text: 'Learn Redux' } });
+Selector   -  is a function that extracts specific pieces of data from the Redux store.
+
+
+
+UI ----(dispatch data)---->Action(data to be stored in redux)---->Reducer(stores data in store)---->Store(provides data and contains states)--->  UI
+
+-------------------------------------------------------------------
+
+
+npx create-next-app@latest
+npm i react-redux
+npm i @reduxjs/toolkit react redux
+
+Run: npm run dev
+
+
+* Redux don't pesrist its data when we refresh application, but it can be done using redux-persist library.
+* Dataflow of Redux is unidirectional         UI----(dispatch)---->Action---->Reducers---->Store----(subscribe)---->UI
+
+
+-------------------------------------------------------------------
+
+
 npx create-react-app@latest redux_toolkit
 
 Redux --> npm i react-redux
