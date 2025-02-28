@@ -9,7 +9,7 @@ const Counter = () => {
     //extract counter value from store
     const count = useSelector((state) => state.counter.value);
 
-    //extract dispatch function from store 
+    //extract dispatch function from store
     const dispatch = useDispatch();
 
     function handleIncremet() {

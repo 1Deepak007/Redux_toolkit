@@ -44,6 +44,14 @@ const Navbar = () => {
                                     <FaStore className="mr-2" /> {/* D-Mart icon */}
                                     D-Mart
                                 </Link>
+                                <Link to="/user" className="block px-4 py-2 text-sm text-white hover:bg-gray-600 flex items-center" onClick={() => setIsDropdownOpen(false)}>
+                                    <FaStore className="mr-2" /> {/* D-Mart icon */}
+                                    API Calling (createAsyncThunk())
+                                </Link>
+                                <Link to="/normalization" className="block px-4 py-2 text-sm text-white hover:bg-gray-600 flex items-center" onClick={() => setIsDropdownOpen(false)}>
+                                    <FaStore className="mr-2" /> {/* D-Mart icon */}
+                                    Normalization
+                                </Link>
                             </div>
                         </div>
                     )}

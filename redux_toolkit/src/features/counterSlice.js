@@ -9,18 +9,10 @@ export const counterSlice = createSlice({
   // create reducer functions : Logics of reducer for updating states
   reducers: {
     // actions (increment, decrement, reset)
-    increment: (state) => {
-      state.value += 1;
-    },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action) => {
-      state.value += Number(action.payload);
-    },
-    reset: (state) => {
-      state.value = 0;
-    },
+    increment: (state) => { state.value += 1 },
+    decrement: (state) => { state.value -= 1 },
+    incrementByAmount: (state, action) => { state.value += Number(action.payload) },
+    reset: (state) => { state.value = 0 },
   },
 });
 
